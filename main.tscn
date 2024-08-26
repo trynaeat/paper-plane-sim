@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwtr42wxt46ng"]
+
+[ext_resource type="PackedScene" uid="uid://c7wbcuabsev1d" path="res://test_terrain.tscn" id="2_2k1md"]
+[ext_resource type="PackedScene" uid="uid://b0bmyfniabdn1" path="res://plane.tscn" id="2_m40eh"]
+[ext_resource type="PackedScene" uid="uid://dbrkwdkysju8f" path="res://meshes/debug_overlay.tscn" id="3_6oglv"]
+
+[node name="Main" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.322547, 0.946554, 0, -0.946554, 0.322547, 0, 19.3615, 0)
+
+[node name="test_terrain" parent="." instance=ExtResource("2_2k1md")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 8.95063)
+
+[node name="Plane" parent="." instance=ExtResource("2_m40eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
+
+[node name="DebugOverlay" parent="." instance=ExtResource("3_6oglv")]

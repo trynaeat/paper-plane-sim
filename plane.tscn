@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0bmyfniabdn1"]
+
+[ext_resource type="Script" path="res://Plane.cs" id="1_0vylf"]
+[ext_resource type="ArrayMesh" uid="uid://ccyo5xcy8pjwu" path="res://meshes/paper_airplane_mesh.res" id="1_cvnx6"]
+[ext_resource type="Script" path="res://Camera3d.cs" id="3_nceqc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r5sdi"]
+size = Vector3(1, 0.367676, 3.32092)
+
+[node name="Plane Root" type="Node3D"]
+
+[node name="Plane" type="CharacterBody3D" parent="."]
+script = ExtResource("1_0vylf")
+LiftCoeff = 0.05
+DragCoeff = 0.01
+StartSpeed = 20
+MaxRollRate = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
+mesh = ExtResource("1_cvnx6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.130615, 0.00384521)
+shape = SubResource("BoxShape3D_r5sdi")
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.726699, 2.87352)
+remote_path = NodePath("../../PlaneCam")
+update_rotation = false
+
+[node name="COMPivot" type="Node3D" parent="Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.381483)
+
+[node name="PlaneCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.974742, 0.223335, 0, -0.223335, 0.974742, 0, 0.726699, 2.87352)
+current = true
+script = ExtResource("3_nceqc")

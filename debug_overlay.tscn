@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d31ko3iuvodne"]
+
+[ext_resource type="Script" path="res://DebugOverlay.cs" id="1_ud6nv"]
+[ext_resource type="Script" path="res://Control.cs" id="1_v8eaw"]
+
+[node name="DebugOverlay" type="CanvasLayer"]
+script = ExtResource("1_ud6nv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_v8eaw")
