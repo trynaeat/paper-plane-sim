@@ -21,15 +21,10 @@ public partial class Plane : RigidBody3D
     [Export]
     public int CriticalAoA { get; set; } = 20;
 
-    // Degrees/Second
-    [Export]
-    public float MaxRollRate { get; set; } = 90;
     [Export]
     public float RollForce { get; set; } = 0.1f;
     [Export]
     public float PitchForce { get; set; } = 0.1f;
-    [Export]
-    public float MaxPitchRate { get; set; } = 35;
     [Export]
     public Vector3 Lift { get; set; }
     [Export]
@@ -40,20 +35,15 @@ public partial class Plane : RigidBody3D
     public Vector3 FGravity { get; set; }
     [Export]
     public Vector3 ThrustVec { get; set; }
-    private Vector3 _targetVelocity = Vector3.Zero;
-    private float _rollSpeed = 0;
-    private float _pitchSpeed = 0;
     private double _aoa = 0;
 
     public override void _Ready()
     {
         base._Ready();
-        _targetVelocity = StartSpeed * this.Basis.Z * -1;
         DebugOverlay.Draw.AddVector(this, RigidBody3D.PropertyName.LinearVelocity, 1f, new Color(0, 1, 0));
         DebugOverlay.Draw.AddVector(this, "Lift", 0.01f, new Color(0, 0, 1));
         DebugOverlay.Draw.AddVector(this, "Drag", 0.01f, new Color(1, 0, 0));
         DebugOverlay.Draw.AddVector(this, "FGravity", 0.01f, new Color(1, 0, 1));
-        // DebugOverlay.Draw.AddVector(this, "ThrustVec", 0.01f, new Color(1, 1, 1));
     }
 
     public override void _PhysicsProcess(double delta)
@@ -64,17 +54,14 @@ public partial class Plane : RigidBody3D
         if (LinearVelocity.Length() < 0.1) {
             this._aoa = 90;
         }
-        GD.Print(this._aoa);
-        DoPitch();
+        // GD.Print(this._aoa);
+        DoPitch((float)_aoa);
         DoRoll();
         Vector3 lift = DoLift();
         Vector3 drag = DoDrag();
         Vector3 gravity = FallAcceleration * Mass * Vector3.Down;
         Vector3 thrust = DoThrust();
         this.FGravity = gravity;
-        Vector3 fNet = lift + drag + gravity;
-        Vector3 acceleration = fNet / Mass;
-        _targetVelocity += acceleration * (float)delta;
         ApplyCentralForce(gravity);
         ApplyForce(lift);
         ApplyForce(drag, -1 * forwardGlobal * DragDistance);
@@ -94,8 +81,12 @@ public partial class Plane : RigidBody3D
         }
     }
 
-    private void DoPitch ()
+    private void DoPitch (float aoa)
     {
+       if (aoa > CriticalAoA)
+       {
+        return;
+       }
        float speed = LinearVelocity.Length();
        Vector3 right = GlobalTransform.Basis.X;
        if (Input.IsActionPressed("pitch_up"))
@@ -133,9 +124,8 @@ public partial class Plane : RigidBody3D
 
     private float getCL (float aoa)
     {
-        return 1;
         // Assume a linear function, top out at CL of 1.5 at 20 degrees.
-        if (aoa > 20)
+        if (aoa > CriticalAoA)
         {
             return 0;
         }
