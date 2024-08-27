@@ -15,7 +15,7 @@ public partial class Camera3d : Camera3D
 	public override void _PhysicsProcess(double delta)
     {
 		Vector3 newRotation = new Vector3(Rotation.X, Rotation.Y, Rotation.Z);
-        Vector3 planeRotation = GetParent().GetNode<CharacterBody3D>("Plane").Rotation;
+        Vector3 planeRotation = GetParent().GetNode<RigidBody3D>("Plane").Rotation;
 		newRotation.X = planeRotation.X;
 		newRotation.Y = planeRotation.Y;
 		Rotation = newRotation;

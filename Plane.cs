@@ -1,19 +1,19 @@
 using System;
 using Godot;
 
-public partial class Plane : CharacterBody3D
+public partial class Plane : RigidBody3D
 {
     [Export]
     public float FallAcceleration { get; set; } = 9.8f;
 
     [Export]
-    public float Mass { get; set; } = 5;
-
-    [Export]
     public float LiftCoeff { get; set; } = 20;
 
     [Export]
-    public float DragCoeff { get; set; } = 20;
+    public Vector3 DragCoeff { get; set; } = new Vector3(1, 2, 0.02f);
+
+    [Export]
+    public float DragDistance {get; set; } = 0.5f;
 
     [Export]
     public int StartSpeed { get; set; } = 5;
@@ -35,7 +35,11 @@ public partial class Plane : CharacterBody3D
     [Export]
     public Vector3 Drag { get; set; }
     [Export]
+    public float Thrust { get; set; }
+    [Export]
     public Vector3 FGravity { get; set; }
+    [Export]
+    public Vector3 ThrustVec { get; set; }
     private Vector3 _targetVelocity = Vector3.Zero;
     private float _rollSpeed = 0;
     private float _pitchSpeed = 0;
@@ -45,99 +49,91 @@ public partial class Plane : CharacterBody3D
     {
         base._Ready();
         _targetVelocity = StartSpeed * this.Basis.Z * -1;
-        Velocity = _targetVelocity;
-        DebugOverlay.Draw.AddVector(this, CharacterBody3D.PropertyName.Velocity, 1f, new Color(0, 1, 0));
+        DebugOverlay.Draw.AddVector(this, RigidBody3D.PropertyName.LinearVelocity, 1f, new Color(0, 1, 0));
         DebugOverlay.Draw.AddVector(this, "Lift", 0.01f, new Color(0, 0, 1));
         DebugOverlay.Draw.AddVector(this, "Drag", 0.01f, new Color(1, 0, 0));
         DebugOverlay.Draw.AddVector(this, "FGravity", 0.01f, new Color(1, 0, 1));
+        // DebugOverlay.Draw.AddVector(this, "ThrustVec", 0.01f, new Color(1, 1, 1));
     }
 
     public override void _PhysicsProcess(double delta)
     {
         Vector3 forward = -1 * this.Basis.Z;
-        this._aoa = Mathf.Abs(forward.AngleTo(Velocity) * (180.0 / Math.PI));
-        if (Velocity.Length() < 0.1) {
+        Vector3 forwardGlobal = -1 * GlobalBasis.Z;
+        this._aoa = Mathf.Abs(forward.AngleTo(LinearVelocity) * (180.0 / Math.PI));
+        if (LinearVelocity.Length() < 0.1) {
             this._aoa = 90;
         }
         GD.Print(this._aoa);
-        DoPitch(delta);
-        DoRoll(delta);
+        DoPitch();
+        DoRoll();
         Vector3 lift = DoLift();
         Vector3 drag = DoDrag();
         Vector3 gravity = FallAcceleration * Mass * Vector3.Down;
+        Vector3 thrust = DoThrust();
         this.FGravity = gravity;
         Vector3 fNet = lift + drag + gravity;
         Vector3 acceleration = fNet / Mass;
         _targetVelocity += acceleration * (float)delta;
-        Velocity = _targetVelocity;
-        MoveAndSlide();
+        ApplyCentralForce(gravity);
+        ApplyForce(lift);
+        ApplyForce(drag, -1 * forwardGlobal * DragDistance);
+        ApplyForce(thrust);
     }
 
-    private void DoRoll (double delta)
+    private void DoRoll ()
     {
+        Vector3 forward = -1 * GlobalTransform.Basis.Z;
         if (Input.IsActionPressed("bank_left"))
         {
-            this._rollSpeed = Mathf.Min(this._rollSpeed + RollForce, MaxRollRate);
+            ApplyTorque(RollForce * forward * -1);
         }
         else if (Input.IsActionPressed("bank_right"))
         {
-            this._rollSpeed = Mathf.Max(this._rollSpeed - RollForce, -1 * MaxRollRate);
+            ApplyTorque(RollForce * forward);
         }
-        else
-        {
-            float newSpeed = Mathf.Max(0, Mathf.Abs(this._rollSpeed) - RollForce);
-            if (this._rollSpeed < 0)
-            {
-                newSpeed = -1 * newSpeed;
-            }
-            this._rollSpeed = newSpeed;
-        }
-        RotateZ(this._rollSpeed * (float)delta);
     }
 
-    private void DoPitch (double delta)
+    private void DoPitch ()
     {
+       float speed = LinearVelocity.Length();
+       Vector3 right = GlobalTransform.Basis.X;
        if (Input.IsActionPressed("pitch_up"))
        {
-        this._pitchSpeed = Mathf.Min(this._pitchSpeed + PitchForce, MaxPitchRate);
+        ApplyTorque(PitchForce * speed * right);
        }
        else if (Input.IsActionPressed("pitch_down"))
        {
-        this._pitchSpeed = Mathf.Max(this._pitchSpeed - PitchForce, -1 * MaxPitchRate);
+        ApplyTorque(PitchForce * speed * right * -1);
        }
-       else {
-        float newSpeed = Mathf.Max(0, Mathf.Abs(this._pitchSpeed) - PitchForce);
-        if (this._pitchSpeed < 0)
-        {
-            newSpeed = -1 * newSpeed;
-        }
-        this._pitchSpeed = newSpeed;
-       }
-       Vector3 rotAxis = GetNode<Node3D>("COMPivot").Basis.X;
-       RotateObjectLocal(rotAxis, this._pitchSpeed * (float)delta);
     }
 
     private Vector3 DoLift ()
     {
-        float speed = Velocity.Length();
-        float liftForce = speed * speed * getCL((float)this._aoa) / 2;
-        Vector3 dragDir = Velocity.Normalized() * -1;
-        Vector3 lift = liftForce * dragDir.Cross(Basis.Y).Cross(dragDir).Normalized();
+        float speed = LinearVelocity.Length();
+        float liftForce = LiftCoeff * speed * speed * getCL((float)this._aoa) / 2;
+        Vector3 lift = GlobalTransform.Basis.Y * liftForce;
         this.Lift = lift;
         return lift;
     }
 
     private Vector3 DoDrag ()
     {
-        float speed = Velocity.Length();
-        float dragForce = DragCoeff * speed * speed * (float)Mathf.Abs(this._aoa) / 2;
-        Vector3 drag = dragForce * -1 * Velocity.Normalized();
+        Vector3 airVelocityVector = ToLocal(GlobalTransform.Origin + LinearVelocity);
+        Vector3 drag = new Vector3(
+            -1 * Mathf.Sign(airVelocityVector.X) * DragCoeff.X * (airVelocityVector.X * airVelocityVector.X) / 2,
+            -1 * Mathf.Sign(airVelocityVector.Y) * DragCoeff.Y * (airVelocityVector.Y * airVelocityVector.Y) / 2,
+            -1 * Mathf.Sign(airVelocityVector.Z) * DragCoeff.Z * (airVelocityVector.Z * airVelocityVector.Z) / 2
+        );
+        drag = ToGlobal(drag) - GlobalTransform.Origin;
         this.Drag = drag;
+        AngularDamp = 1 + DragCoeff.LengthSquared() * 0.8f;
         return drag;
     }
 
     private float getCL (float aoa)
     {
+        return 1;
         // Assume a linear function, top out at CL of 1.5 at 20 degrees.
         if (aoa > 20)
         {
@@ -145,5 +141,12 @@ public partial class Plane : CharacterBody3D
         }
         // GD.Print(aoa * 0.075f);
         return aoa * 0.075f;
+    }
+
+    private Vector3 DoThrust ()
+    {
+        Vector3 forward = -1 * GlobalTransform.Basis.Z.Normalized();
+        this.ThrustVec = Thrust * forward;
+        return Thrust * forward;
     }
 }

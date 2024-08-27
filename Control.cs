@@ -34,7 +34,7 @@ public partial class Control : Godot.Control
 	[Export]
     public Camera3D camera;
 	[Export]
-    public CharacterBody3D player;
+    public RigidBody3D player;
 	[Export]
     public int width = 15;
 	private List<Vector> vectors = new List<Vector>();
