@@ -1,43 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0bmyfniabdn1"]
+[gd_scene load_steps=4 format=3 uid="uid://b0bmyfniabdn1"]
 
 [ext_resource type="Script" path="res://Plane.cs" id="1_0vylf"]
 [ext_resource type="ArrayMesh" uid="uid://ccyo5xcy8pjwu" path="res://meshes/paper_airplane_mesh.res" id="1_cvnx6"]
-[ext_resource type="Script" path="res://Camera3d.cs" id="3_nceqc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5sdi"]
 size = Vector3(1, 0.367676, 3.32092)
 
-[node name="Plane Root" type="Node3D"]
-
-[node name="Plane" type="RigidBody3D" parent="."]
+[node name="Plane" type="RigidBody3D"]
 mass = 5.0
 gravity_scale = 0.0
 linear_velocity = Vector3(0, 0, -40)
 script = ExtResource("1_0vylf")
 LiftCoeff = 0.2
+DragCoeff = Vector3(2, 4, 0.02)
 DragDistance = 0.15
 StartSpeed = 20
-MaxRollRate = 5.0
 RollForce = 15.0
 PitchForce = 2.0
-Thrust = 25.0
+Thrust = 30.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_cvnx6")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.130615, 0.00384521)
 shape = SubResource("BoxShape3D_r5sdi")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Plane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.726699, 2.87352)
-remote_path = NodePath("../../PlaneCam")
-update_rotation = false
-
-[node name="COMPivot" type="Node3D" parent="Plane"]
+[node name="COMPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.381483)
 
-[node name="PlaneCam" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.974742, 0.223335, 0, -0.223335, 0.974742, 0, 0.726699, 2.87352)
-current = true
-script = ExtResource("3_nceqc")
+[node name="Plane Root" type="Node3D" parent="."]
