@@ -38,6 +38,7 @@ public partial class Control : Godot.Control
 	[Export]
     public int width = 15;
 	private List<Vector> vectors = new List<Vector>();
+	private bool _drawVectors = false;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -46,16 +47,23 @@ public partial class Control : Godot.Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Input.IsActionJustPressed("debug_toggle"))
+		{
+			this._drawVectors = !this._drawVectors;
+		}
 		QueueRedraw();
 	}
 
     public override void _Draw()
     {
         base._Draw();
-		this.camera = GetViewport().GetCamera3D();
-		foreach(Vector v in vectors)
+		if(this._drawVectors)
 		{
-			v.DrawVec(this, camera);
+			this.camera = GetViewport().GetCamera3D();
+			foreach(Vector v in vectors)
+			{
+				v.DrawVec(this, camera);
+			}
 		}
     }
 
