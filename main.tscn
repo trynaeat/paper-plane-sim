@@ -40,12 +40,14 @@ albedo_texture = ExtResource("4_v11i4")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_yk1bs")
+SpawnLocation = Vector3(0, 200, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.322547, 0.946554, 0, -0.946554, 0.322547, 0, 19.3615, 0)
 
 [node name="Plane" parent="." instance=ExtResource("2_m40eh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+DragCoeff = Vector3(1, 1, 1)
 Thrust = 0.0
 
 [node name="DebugOverlay" parent="." instance=ExtResource("3_6oglv")]

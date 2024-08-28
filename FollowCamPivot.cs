@@ -20,7 +20,6 @@ public partial class FollowCamPivot : Node3D
 		set => GetNode<FollowCam>("FollowCam").ScrollSensitivity = value;
 	}
 
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -34,7 +33,10 @@ public partial class FollowCamPivot : Node3D
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-		Position = Target.Position;
+		if (Target != null)
+		{
+			Position = Target.Position;
+		}
     }
 
 	public override void _Input(InputEvent @event)

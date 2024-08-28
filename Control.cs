@@ -5,7 +5,7 @@ using Godot;
 
 partial class Vector
 {
-	private Node3D _obj;
+	public Node3D Obj { get; }
 	private string _property;
 	public int width = 5;
 	public float scale = 1.0f;
@@ -13,7 +13,7 @@ partial class Vector
 
 	public Vector(Node3D obj, string prop, float scale, Color color)
 	{
-		this._obj = obj;
+		this.Obj = obj;
 		this._property = prop;
 		this.scale = scale;
 		this.color = color;
@@ -21,8 +21,8 @@ partial class Vector
 
 	public void DrawVec (Control node, Camera3D camera)
 	{
-		Vector2 start = camera.UnprojectPosition(_obj.GlobalTransform.Origin);
-		Vector2 end = camera.UnprojectPosition(_obj.GlobalTransform.Origin + _obj.Get(_property).As<Vector3>() * scale);
+		Vector2 start = camera.UnprojectPosition(Obj.GlobalTransform.Origin);
+		Vector2 end = camera.UnprojectPosition(Obj.GlobalTransform.Origin + Obj.Get(_property).As<Vector3>() * scale);
 		node.DrawLine(start, end, color, width);
 		node.DrawTriangle(end, start.DirectionTo(end), width * 2, color);
 	}
@@ -71,5 +71,10 @@ public partial class Control : Godot.Control
 	public void AddVector(Node3D obj, string prop, float scale, Color color)
 	{
 		vectors.Add(new Vector(obj, prop, scale, color));
+	}
+
+	public void RemoveVectors(Node3D obj)
+	{
+		vectors.RemoveAll(v => v.Obj == obj);
 	}
 }

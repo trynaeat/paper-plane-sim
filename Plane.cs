@@ -139,4 +139,10 @@ public partial class Plane : RigidBody3D
         this.ThrustVec = Thrust * forward;
         return Thrust * forward;
     }
+
+    public void Destroy ()
+    {
+        DebugOverlay.Draw.RemoveVectors(this);
+        QueueFree();
+    }
 }
