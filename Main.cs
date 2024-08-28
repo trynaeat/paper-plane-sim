@@ -8,13 +8,16 @@ public partial class Main : Node
 	private PackedScene _planeScene;
 
 	private Plane _activePlayer;
+	private DebugOverlay _debug;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_activePlayer = GetNode<Plane>("Plane");
 		_planeScene = GD.Load<PackedScene>("res://plane.tscn");
+		_debug = GetNode<DebugOverlay>("DebugOverlay");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
+		_activePlayer.PhysicsUpdate += _debug.OnPhysicsUpdate;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,20 +36,26 @@ public partial class Main : Node
 		// Respawn
 		if (Input.IsActionJustPressed("respawn"))
 		{
-			FollowCamPivot cam = GetNode<FollowCamPivot>("FollowCam");
-			// Destroy old one
-			cam.Target = null;
-			Plane player = this._activePlayer;
-			player.Destroy();
-			// Create a new one
-			Plane newPlayer = _planeScene.Instantiate<Plane>();
-			newPlayer.Position = SpawnLocation;
-			this._activePlayer = newPlayer;
-			// Attach camera to it
-			cam.Target = newPlayer;
-			
-			AddChild(newPlayer);
-			newPlayer.Name = "Plane";
+			_SpawnPlane();
 		}
+	}
+
+	private void _SpawnPlane ()
+	{
+		FollowCamPivot cam = GetNode<FollowCamPivot>("FollowCam");
+		// Destroy old one
+		cam.Target = null;
+		Plane player = this._activePlayer;
+		player.Destroy();
+		// Create a new one
+		Plane newPlayer = _planeScene.Instantiate<Plane>();
+		newPlayer.Position = SpawnLocation;
+		this._activePlayer = newPlayer;
+		// Attach camera to it
+		cam.Target = newPlayer;
+		
+		AddChild(newPlayer);
+		newPlayer.Name = "Plane";
+		newPlayer.PhysicsUpdate += _debug.OnPhysicsUpdate;
 	}
 }

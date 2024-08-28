@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Main.cs" id="1_yk1bs"]
 [ext_resource type="PackedScene" uid="uid://b0bmyfniabdn1" path="res://plane.tscn" id="2_m40eh"]
-[ext_resource type="PackedScene" uid="uid://dbrkwdkysju8f" path="res://meshes/debug_overlay.tscn" id="3_6oglv"]
 [ext_resource type="PackedScene" uid="uid://l81fey8a2hq6" path="res://terrain.tscn" id="4_kjy3s"]
 [ext_resource type="Texture2D" uid="uid://doxm181if60yp" path="res://Textures/terrain_scene_diffuse.png" id="4_v11i4"]
 [ext_resource type="PackedScene" uid="uid://cr30l5quwv3mk" path="res://follow_cam.tscn" id="5_w4y0u"]
+[ext_resource type="PackedScene" uid="uid://d31ko3iuvodne" path="res://debug_overlay.tscn" id="6_ye7el"]
 
 [sub_resource type="Gradient" id="Gradient_dy06c"]
 offsets = PackedFloat32Array(0.496855, 0.968553, 1)
@@ -45,8 +45,6 @@ SpawnLocation = Vector3(0, 200, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.322547, 0.946554, 0, -0.946554, 0.322547, 0, 19.3615, 0)
 
-[node name="DebugOverlay" parent="." instance=ExtResource("3_6oglv")]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hq86q")
 
@@ -67,3 +65,5 @@ ScrollSensitivity = 0.1
 
 [node name="Plane" parent="." instance=ExtResource("2_m40eh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 192.885, 0)
+
+[node name="DebugOverlay" parent="." instance=ExtResource("6_ye7el")]

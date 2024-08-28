@@ -3,6 +3,8 @@ using Godot;
 
 public partial class Plane : RigidBody3D
 {
+    [Signal]
+    public delegate void PhysicsUpdateEventHandler(float velocity, float altitude, float aoa);
     [Export]
     public float FallAcceleration { get; set; }
 
@@ -48,6 +50,7 @@ public partial class Plane : RigidBody3D
 
     public override void _PhysicsProcess(double delta)
     {
+        float speed = LinearVelocity.Length();
         Vector3 forward = -1 * this.Basis.Z;
         Vector3 forwardGlobal = -1 * GlobalBasis.Z;
         this._aoa = Mathf.Abs(forward.AngleTo(LinearVelocity) * (180.0 / Math.PI));
@@ -57,7 +60,7 @@ public partial class Plane : RigidBody3D
         // GD.Print(this._aoa);
         DoPitch((float)_aoa);
         DoRoll();
-        Vector3 lift = DoLift();
+        Vector3 lift = DoLift(speed);
         Vector3 drag = DoDrag();
         Vector3 gravity = FallAcceleration * Mass * Vector3.Down;
         Vector3 thrust = DoThrust();
@@ -66,6 +69,7 @@ public partial class Plane : RigidBody3D
         ApplyForce(lift);
         ApplyForce(drag, -1 * forwardGlobal * DragDistance);
         ApplyForce(thrust);
+        EmitSignal(SignalName.PhysicsUpdate, speed, GlobalPosition.Y, _aoa);
     }
 
     private void DoRoll ()
@@ -99,9 +103,8 @@ public partial class Plane : RigidBody3D
        }
     }
 
-    private Vector3 DoLift ()
+    private Vector3 DoLift (float speed)
     {
-        float speed = LinearVelocity.Length();
         float liftForce = LiftCoeff * speed * speed * getCL((float)this._aoa) / 2;
         Vector3 lift = GlobalTransform.Basis.Y * liftForce;
         this.Lift = lift;
