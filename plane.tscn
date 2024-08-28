@@ -7,17 +7,18 @@
 size = Vector3(1, 0.367676, 3.32092)
 
 [node name="Plane" type="RigidBody3D"]
-mass = 5.0
+mass = 2.0
 gravity_scale = 0.0
 linear_velocity = Vector3(0, 0, -40)
 script = ExtResource("1_0vylf")
-LiftCoeff = 0.2
-DragCoeff = Vector3(2, 4, 0.02)
-DragDistance = 0.15
+FallAcceleration = 9.8
+LiftCoeff = 0.1
+DragCoeff = Vector3(2, 2, 0.02)
+DragDistance = 0.3
 StartSpeed = 20
-RollForce = 15.0
-PitchForce = 2.0
-Thrust = 30.0
+CriticalAoA = 20
+RollForce = 8.0
+PitchForce = 1.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_cvnx6")

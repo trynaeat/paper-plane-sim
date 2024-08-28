@@ -4,27 +4,27 @@ using Godot;
 public partial class Plane : RigidBody3D
 {
     [Export]
-    public float FallAcceleration { get; set; } = 9.8f;
+    public float FallAcceleration { get; set; }
 
     [Export]
-    public float LiftCoeff { get; set; } = 20;
+    public float LiftCoeff { get; set; }
 
     [Export]
-    public Vector3 DragCoeff { get; set; } = new Vector3(1, 2, 0.02f);
+    public Vector3 DragCoeff { get; set; }
 
     [Export]
-    public float DragDistance {get; set; } = 0.5f;
+    public float DragDistance {get; set; }
 
     [Export]
-    public int StartSpeed { get; set; } = 5;
+    public int StartSpeed { get; set; }
 
     [Export]
-    public int CriticalAoA { get; set; } = 20;
+    public int CriticalAoA { get; set; }
 
     [Export]
-    public float RollForce { get; set; } = 0.1f;
+    public float RollForce { get; set; }
     [Export]
-    public float PitchForce { get; set; } = 0.1f;
+    public float PitchForce { get; set; }
     [Export]
     public Vector3 Lift { get; set; }
     [Export]
