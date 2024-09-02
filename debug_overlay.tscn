@@ -17,8 +17,10 @@ script = ExtResource("1_v8eaw")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -97.0
-offset_bottom = 53.0
+offset_left = -104.335
+offset_top = 7.705
+offset_right = -7.33496
+offset_bottom = 111.705
 grow_horizontal = 0
 
 [node name="FPS" type="Label" parent="DebugContainer"]

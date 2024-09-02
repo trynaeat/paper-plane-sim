@@ -1,14 +1,14 @@
+
 using Godot;
 
 public partial class Main : Node
 {
-	[Export]
-	public Vector3 SpawnLocation;
-
 	private PackedScene _planeScene;
 
 	private Plane _activePlayer;
 	private DebugOverlay _debug;
+
+	private Transform3D _startSpawn;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -18,6 +18,7 @@ public partial class Main : Node
 		_debug = GetNode<DebugOverlay>("DebugOverlay");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
 		_activePlayer.PhysicsUpdate += _debug.OnPhysicsUpdate;
+		this._startSpawn = this._activePlayer.Transform;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,7 +50,7 @@ public partial class Main : Node
 		player.Destroy();
 		// Create a new one
 		Plane newPlayer = _planeScene.Instantiate<Plane>();
-		newPlayer.Position = SpawnLocation;
+		newPlayer.Transform = this._startSpawn;
 		this._activePlayer = newPlayer;
 		// Attach camera to it
 		cam.Target = newPlayer;

@@ -46,6 +46,8 @@ public partial class Plane : RigidBody3D
         DebugOverlay.Draw.AddVector(this, "Lift", 0.01f, new Color(0, 0, 1));
         DebugOverlay.Draw.AddVector(this, "Drag", 0.01f, new Color(1, 0, 0));
         DebugOverlay.Draw.AddVector(this, "FGravity", 0.01f, new Color(1, 0, 1));
+        Vector3 dir = -1 * this.Basis.Z.Normalized();
+        LinearVelocity = dir * StartSpeed;
     }
 
     public override void _PhysicsProcess(double delta)

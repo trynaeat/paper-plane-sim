@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcs1uwyo8eb32"]
+
+[ext_resource type="ArrayMesh" uid="uid://k7mekm0gc6mp" path="res://meshes/school_wall.res" id="1_hqj0y"]
+[ext_resource type="ArrayMesh" uid="uid://cetfbknef1gb8" path="res://meshes/school_floor.res" id="2_urinx"]
+[ext_resource type="ArrayMesh" uid="uid://drvh13dpas1cp" path="res://meshes/school_wall_2x2.res" id="3_e15t2"]
+[ext_resource type="ArrayMesh" uid="uid://bwf6tct1ecnfj" path="res://meshes/school_door_closed.res" id="4_ycvs4"]
+
+[node name="TileMeshes" type="Node3D"]
+
+[node name="SchoolWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00970674, 0, -2.09134)
+mesh = ExtResource("1_hqj0y")
+
+[node name="SchoolFloor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.310615, 4.76837e-07, 1.8014)
+mesh = ExtResource("2_urinx")
+
+[node name="SchoolWall2x2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31291, 0, -2.2411)
+mesh = ExtResource("3_e15t2")
+
+[node name="SchoolDoorClosed" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4137, 0, -0.420994)
+mesh = ExtResource("4_ycvs4")

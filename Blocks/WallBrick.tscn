@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjua4g16rthno"]
+
+[ext_resource type="ArrayMesh" uid="uid://k7mekm0gc6mp" path="res://meshes/school_wall.res" id="1_tohfm"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ji651"]
+points = PackedVector3Array(-1, 0, 0, 1, 0, 0, -1, 0, 1.03623, -1, 6, 0, 1, 0, 1.03623, 1, 6, 0, -1, 0.471026, 1.03623, -1, 6, 0.999913, 1, 0.471026, 1.03623, 1, 6, 0.999913)
+
+[node name="WallBrick" type="StaticBody3D"]
+
+[node name="SchoolWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+mesh = ExtResource("1_tohfm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+shape = SubResource("ConvexPolygonShape3D_ji651")

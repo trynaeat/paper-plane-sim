@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvvx6c2etiat4"]
+
+[ext_resource type="ArrayMesh" uid="uid://boj2wl7brltka" path="res://meshes/drop_ceiling_4x4.res" id="1_a4rax"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_746cb"]
+points = PackedVector3Array(-2, 0, -2, -2, 0, 2, 2, 0, -2, 2, 0, 2)
+
+[node name="CeilingDrop4x4" type="StaticBody3D"]
+
+[node name="DropCeiling4x4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+mesh = ExtResource("1_a4rax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+shape = SubResource("ConvexPolygonShape3D_746cb")

@@ -2,3 +2,7 @@
 .godot/
 /android/
 meshes/
+
+data_*
+*.exe
+*.pck
