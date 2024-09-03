@@ -24,13 +24,11 @@ shape = SubResource("ConvexPolygonShape3D_j2xjk")
 mesh = ExtResource("2_2hfgg")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.238693, -0.498137)
-visible = false
-light_energy = 5.688
-light_size = 0.433
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.415928, -0.498137)
+light_energy = 11.599
+light_size = 0.446
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.266423, -1.50233)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.365165, -1.50233)
 light_energy = 6.096
 light_size = 0.433

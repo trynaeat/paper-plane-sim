@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dahm87e8pp0v7"]
+
+[ext_resource type="ArrayMesh" uid="uid://bl3j7pa5wq2da" path="res://meshes/Lockers/school_lockers_2x2.res" id="1_fhxpr"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7b7s1"]
+points = PackedVector3Array(-1, 0.5, -0.5, 1, 0.5, -0.5, -1, 0.5, -2.47061e-05, -1, 4.5, -0.5, 1, 0.5, -2.47061e-05, 1, 4.5, -0.5, -0.744518, 0.686374, 0.0359749, -0.740407, 1.49178, 0.0623415, -1, 4.5, -2.47061e-05, 0.760767, 0.686374, 0.0359749, 1, 4.5, -2.47061e-05, -0.708301, 1.45967, 0.0623415, -0.73101, 1.46907, 0.0623415, -0.740407, 3.49178, 0.0623415, -0.744518, 4.24511, 0.0359749, 0.32361, 1.49178, 0.0623415, 0.314409, 1.46907, 0.0623415, 0.291699, 1.45967, 0.0623415, 0.760767, 4.24511, 0.0359749, -0.73101, 3.51449, 0.0623415, -0.708301, 3.52388, 0.0623415, 0.32361, 3.49178, 0.0623415, 0.291699, 3.52388, 0.0623415, 0.314409, 3.51449, 0.0623415)
+
+[node name="Lockers2x2" type="StaticBody3D"]
+
+[node name="SchoolLockers2x2" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_fhxpr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_7b7s1")
