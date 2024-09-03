@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bstylulecjc7d"]
+
+[ext_resource type="ArrayMesh" uid="uid://c500qowbnofja" path="res://meshes/Whiteboard/school_whiteboard_Plane_021.res" id="1_uhs8l"]
+[ext_resource type="ArrayMesh" uid="uid://bm0fdhei6x5jm" path="res://meshes/Whiteboard/school_whiteboard_Plane_023.res" id="2_gc3lc"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sddqy"]
+points = PackedVector3Array(4, 3, 0.102184, 4, 0, 0.102184, 4, 3, 0, -4, 3, 0.102184, 4, 0, 0, -4, 0, 0.102184, -4, 3, 0, -4, 0, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dnnlg"]
+points = PackedVector3Array(-3.62241, -0.000218201, 0.0974436, -3.62241, -0.000218201, 0.293595, -3.62241, 0.0536025, 0.0974436, 3.62241, -0.000218201, 0.0974436, -3.62241, 0.0536025, 0.293595, 3.62241, -0.000218201, 0.293595, 3.62241, 0.0536025, 0.0974436, 3.62241, 0.0536025, 0.293595)
+
+[node name="Whiteboard" type="StaticBody3D"]
+
+[node name="SchoolWhiteboardPlane021" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_uhs8l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_sddqy")
+
+[node name="SchoolWhiteboardPlane023" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_gc3lc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_dnnlg")

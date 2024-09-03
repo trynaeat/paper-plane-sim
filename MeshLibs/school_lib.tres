@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://kq1lp3eqg5go" path="res://Textures/school_wall_school_wall_Wall_Brick_BaseColor.png" id="1_mwtmn"]
 [ext_resource type="Texture2D" uid="uid://wauwax7n621g" path="res://Textures/school_wall_school_wall_Wall_Brick_Normal.png" id="2_b5sr6"]
 [ext_resource type="Texture2D" uid="uid://dm8m8bi0iia18" path="res://meshes/school_floor_tile_school_tiles_DefaultMaterial_BaseColor.png" id="3_p3u2j"]
-[ext_resource type="Texture2D" uid="uid://bwq4r1dd7unn2" path="res://meshes/school_wall_2x2_school_wall_Wall_Brick_BaseColor.png" id="4_m1m62"]
-[ext_resource type="Texture2D" uid="uid://d32lqnxuglpiu" path="res://meshes/school_wall_2x2_school_wall_Wall_Brick_Normal.png" id="5_3n4nx"]
+[ext_resource type="Texture2D" uid="uid://bwq4r1dd7unn2" path="res://Textures/school_wall_2x2_school_wall_Wall_Brick_BaseColor (2).png" id="4_m1m62"]
+[ext_resource type="Texture2D" uid="uid://d32lqnxuglpiu" path="res://Textures/school_wall_2x2_school_wall_Wall_Brick_Normal (2).png" id="5_3n4nx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kj2wk"]
 resource_name = "Wall_Brick"

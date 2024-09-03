@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://m5shf3poxti6"]
+
+[ext_resource type="ArrayMesh" uid="uid://bgf0m6qyp3c4j" path="res://meshes/Ceiling_Light/school_ceiling_light_Plane_016.res" id="1_2xr1w"]
+[ext_resource type="ArrayMesh" uid="uid://dpx7304i3tfhr" path="res://meshes/Ceiling_Light/school_ceiling_light_Plane_017.res" id="2_2hfgg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hjqt"]
+emission_enabled = true
+emission = Color(0.767921, 0.702229, 0.3467, 1)
+emission_energy_multiplier = 2.2
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j2xjk"]
+points = PackedVector3Array(-2, -2.87294e-05, -2, -1.89174, -0.293533, -1.89174, -2, -2.87294e-05, 0, 0, -2.87294e-05, -2, -1.89174, -0.293533, -0.108457, -0.108457, -0.293533, -1.89174, 0, -2.87294e-05, 0, -0.108457, -0.293533, -0.108457)
+
+[node name="CeilingLight" type="StaticBody3D"]
+
+[node name="SchoolCeilingLightPlane016" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_2xr1w")
+surface_material_override/1 = SubResource("StandardMaterial3D_8hjqt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_j2xjk")
+
+[node name="SchoolCeilingLightPlane017" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_2hfgg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.238693, -0.498137)
+visible = false
+light_energy = 5.688
+light_size = 0.433
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.266423, -1.50233)
+visible = false
+light_energy = 6.096
+light_size = 0.433

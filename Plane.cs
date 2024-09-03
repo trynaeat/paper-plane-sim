@@ -68,7 +68,7 @@ public partial class Plane : RigidBody3D
         Vector3 thrust = DoThrust();
         this.FGravity = gravity;
         ApplyCentralForce(gravity);
-        ApplyForce(lift);
+        ApplyCentralForce(lift);
         ApplyForce(drag, -1 * forwardGlobal * DragDistance);
         ApplyForce(thrust);
         EmitSignal(SignalName.PhysicsUpdate, speed, GlobalPosition.Y, _aoa);
