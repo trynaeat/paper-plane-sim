@@ -6,7 +6,9 @@ public abstract partial class Switch : Node3D
 	[Export]
 	public bool On = false;
 	[Export]
-	public int switchChannel;
+	public int SwitchChannel;
+	[Export]
+	public Area3D HitBox;
 	[Export]
 	public AudioStream SoundHigh = null;
 	[Export]
@@ -20,18 +22,25 @@ public abstract partial class Switch : Node3D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Set initial state
 		this._on = On;
+		// Setup debounce timer
 		this._hitTimer = new Timer();
 		this._hitTimer.OneShot = true;
 		this._hitTimer.WaitTime = 0.5;
 		this._hitTimer.Name = "HitTimer";
 		AddChild(this._hitTimer);
 		this._hitTimer.Timeout += OnHitTimerTimeout;
+
+		// Setup sounds
 		if (SoundHigh != null || SoundLow != null)
 		{
 			this._audio = GetNode<AudioStreamPlayer3D>("AudioStream");
 		}
-		EmitSignal(SignalName.Switched, switchChannel, _on);
+
+		// Listen to hitbox for collision
+		HitBox.AreaEntered += OnAreaEntered;
+		EmitSignal(SignalName.Switched, SwitchChannel, _on);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -70,7 +79,7 @@ public abstract partial class Switch : Node3D
 		{
 			this._audio.Play();
 		}
-		EmitSignal(SignalName.Switched, switchChannel, _on);
+		EmitSignal(SignalName.Switched, SwitchChannel, _on);
 		_OnFlip();
 	}
 }
