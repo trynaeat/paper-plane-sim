@@ -21,7 +21,12 @@ public abstract partial class Switch : Node3D
 	public override void _Ready()
 	{
 		this._on = On;
-		this._hitTimer = GetNode<Timer>("HitTimer");
+		this._hitTimer = new Timer();
+		this._hitTimer.OneShot = true;
+		this._hitTimer.WaitTime = 0.5;
+		this._hitTimer.Name = "HitTimer";
+		AddChild(this._hitTimer);
+		this._hitTimer.Timeout += OnHitTimerTimeout;
 		if (SoundHigh != null || SoundLow != null)
 		{
 			this._audio = GetNode<AudioStreamPlayer3D>("AudioStream");
@@ -63,7 +68,6 @@ public abstract partial class Switch : Node3D
 		}
 		if (this._audio != null && this._audio.Stream != null)
 		{
-			GD.Print("Hello!");
 			this._audio.Play();
 		}
 		EmitSignal(SignalName.Switched, switchChannel, _on);
