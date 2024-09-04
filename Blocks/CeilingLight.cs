@@ -8,6 +8,7 @@ public partial class CeilingLight : StaticBody3D
 
 	private Material _materialOff;
 	private Material _materialOn;
+	private OmniLight3D _light;
 
 	private bool _state;
 
@@ -24,6 +25,7 @@ public partial class CeilingLight : StaticBody3D
 	{
 		this._materialOff = GD.Load<Material>("res://Materials/CeilingLightNonEmissive.tres");
 		this._materialOn = GD.Load<Material>("res://Materials/CeilingLightEmissive.tres");
+		this._light = GetNode<OmniLight3D>("OmniLight3D");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,10 +47,12 @@ public partial class CeilingLight : StaticBody3D
 		if (this._state)
 		{
 			mainMesh.SetSurfaceOverrideMaterial(1, _materialOn);
+			this._light.LightEnergy = 3;
 		}
 		else
 		{
 			mainMesh.SetSurfaceOverrideMaterial(1, _materialOff);
+			this._light.LightEnergy = 0;
 		}
 	}
 }

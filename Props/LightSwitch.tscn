@@ -44,5 +44,7 @@ shape = SubResource("ConcavePolygonShape3D_66eeu")
 wait_time = 0.5
 one_shot = true
 
+[node name="AudioStream" type="AudioStreamPlayer3D" parent="."]
+
 [connection signal="area_entered" from="Pivot/Area3D" to="." method="OnAreaEntered"]
 [connection signal="timeout" from="HitTimer" to="." method="OnHitTimerTimeout"]
