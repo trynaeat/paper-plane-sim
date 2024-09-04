@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dogmimuuq32wv"]
+[gd_scene load_steps=16 format=3 uid="uid://dogmimuuq32wv"]
 
 [ext_resource type="PackedScene" uid="uid://paedp4ilakti" path="res://Blocks/DoorClosed.tscn" id="1_uu3fo"]
 [ext_resource type="PackedScene" uid="uid://bjua4g16rthno" path="res://Blocks/WallBrick.tscn" id="2_onf5f"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dhhc2pqjs3l22" path="res://Props/TeachersDesk.tscn" id="12_yjqf6"]
 [ext_resource type="PackedScene" uid="uid://bstylulecjc7d" path="res://Props/Whiteboard.tscn" id="13_wobtr"]
 [ext_resource type="PackedScene" uid="uid://dahm87e8pp0v7" path="res://Props/Lockers2x2.tscn" id="14_v04i2"]
+[ext_resource type="PackedScene" uid="uid://ijq8kcwld341" path="res://Props/LightSwitch.tscn" id="15_lqgxl"]
 
 [node name="Classroom" type="Node3D"]
 
@@ -520,23 +521,27 @@ transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 2, 6, 
 [node name="CeilingDrop4x15" parent="Ceiling" instance=ExtResource("5_onpqr")]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 14, 6, 8)
 
-[node name="CeilingLight" parent="Ceiling" instance=ExtResource("8_hnw33")]
+[node name="CeilingLight" parent="Ceiling" groups=["Lights1"] instance=ExtResource("8_hnw33")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 4, 6, 4)
+SwitchChannel = 1
 
 [node name="CeilingLight5" parent="Ceiling" instance=ExtResource("8_hnw33")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 4, 6, -3)
 
-[node name="CeilingLight3" parent="Ceiling" instance=ExtResource("8_hnw33")]
+[node name="CeilingLight3" parent="Ceiling" groups=["Lights1"] instance=ExtResource("8_hnw33")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 10, 6, 4)
+SwitchChannel = 1
 
 [node name="CeilingLight6" parent="Ceiling" instance=ExtResource("8_hnw33")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 10, 6, -3)
 
-[node name="CeilingLight2" parent="Ceiling" instance=ExtResource("8_hnw33")]
+[node name="CeilingLight2" parent="Ceiling" groups=["Lights1"] instance=ExtResource("8_hnw33")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 4, 6, 10)
+SwitchChannel = 1
 
-[node name="CeilingLight4" parent="Ceiling" instance=ExtResource("8_hnw33")]
+[node name="CeilingLight4" parent="Ceiling" groups=["Lights1"] instance=ExtResource("8_hnw33")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 10, 6, 10)
+SwitchChannel = 1
 
 [node name="CeilingDrop1x1" parent="Ceiling" instance=ExtResource("11_aa71e")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 4, 6, 4)
@@ -681,3 +686,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.0452353, -6.48109)
 
 [node name="Lockers2x5" parent="." instance=ExtResource("14_v04i2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.0452353, -6.48109)
+
+[node name="LightSwitch" parent="." groups=["Lights1"] instance=ExtResource("15_lqgxl")]
+transform = Transform3D(0.748, 0, 0, 0, 0.748, 0, 0, 0, 0.748, 2.78553, 2.64276, 0.0224692)
+On = true
+switchChannel = 1
+
+[connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight" method="OnLightSwitchSwitched"]
+[connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight3" method="OnLightSwitchSwitched"]
+[connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight2" method="OnLightSwitchSwitched"]
+[connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight4" method="OnLightSwitchSwitched"]

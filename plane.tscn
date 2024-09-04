@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0bmyfniabdn1"]
+[gd_scene load_steps=6 format=3 uid="uid://b0bmyfniabdn1"]
 
 [ext_resource type="Script" path="res://Plane.cs" id="1_0vylf"]
 [ext_resource type="ArrayMesh" uid="uid://ccyo5xcy8pjwu" path="res://meshes/paper_airplane_mesh.res" id="1_cvnx6"]
@@ -8,6 +8,9 @@ friction = 0.55
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5sdi"]
 size = Vector3(1, 0.367676, 3.32092)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cn2ax"]
+size = Vector3(1.88403, 1, 3.64944)
 
 [node name="Plane" type="RigidBody3D"]
 mass = 1.5
@@ -35,3 +38,9 @@ shape = SubResource("BoxShape3D_r5sdi")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.381483)
 
 [node name="Plane Root" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0557861, 0, 0.0953217)
+shape = SubResource("BoxShape3D_cn2ax")
