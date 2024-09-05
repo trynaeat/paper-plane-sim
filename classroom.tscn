@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dogmimuuq32wv"]
+[gd_scene load_steps=17 format=3 uid="uid://dogmimuuq32wv"]
 
 [ext_resource type="PackedScene" uid="uid://paedp4ilakti" path="res://Blocks/DoorClosed.tscn" id="1_uu3fo"]
 [ext_resource type="PackedScene" uid="uid://bjua4g16rthno" path="res://Blocks/WallBrick.tscn" id="2_onf5f"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bstylulecjc7d" path="res://Props/Whiteboard.tscn" id="13_wobtr"]
 [ext_resource type="PackedScene" uid="uid://dahm87e8pp0v7" path="res://Props/Lockers2x2.tscn" id="14_v04i2"]
 [ext_resource type="PackedScene" uid="uid://ijq8kcwld341" path="res://Props/LightSwitch.tscn" id="15_lqgxl"]
+[ext_resource type="PackedScene" uid="uid://bbbnlhdcv4idk" path="res://Props/DeskFan.tscn" id="16_8hr73"]
 
 [node name="Classroom" type="Node3D"]
 
@@ -690,6 +691,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.0452353, -6.48109)
 [node name="LightSwitch" parent="." groups=["Lights1"] instance=ExtResource("15_lqgxl")]
 transform = Transform3D(0.748, 0, 0, 0, 0.748, 0, 0, 0, 0.748, 2.78553, 2.64276, 0.0224692)
 SwitchChannel = 1
+
+[node name="DeskFan" parent="." instance=ExtResource("16_8hr73")]
+transform = Transform3D(-0.998988, 0, 0.0449793, 0, 1, 0, -0.0449793, 0, -0.998988, 2.44912, 1.92218, 10.4754)
+
+[node name="DeskFan2" parent="." instance=ExtResource("16_8hr73")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.39565, 0, 5.24284)
+FanRotation = Vector3(-90, 0, 0)
 
 [connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight" method="OnLightSwitchSwitched"]
 [connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight3" method="OnLightSwitchSwitched"]

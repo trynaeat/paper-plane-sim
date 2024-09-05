@@ -23,6 +23,10 @@ DebugOverlay="*res://debug_overlay.tscn"
 
 project/assembly_name="Paper Plane Sim"
 
+[global_group]
+
+pushable="Physics bodies that can be pushed by a fan"
+
 [input]
 
 pitch_up={

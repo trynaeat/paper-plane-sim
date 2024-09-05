@@ -150,4 +150,9 @@ public partial class Plane : RigidBody3D
         DebugOverlay.Draw.RemoveVectors(this);
         QueueFree();
     }
+
+    public void OnArea3DPushed(float x, float y, float z)
+    {
+        ApplyForce(new Vector3(x, y, z));
+    }
 }

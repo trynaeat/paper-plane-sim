@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0bmyfniabdn1"]
+[gd_scene load_steps=7 format=3 uid="uid://b0bmyfniabdn1"]
 
 [ext_resource type="Script" path="res://Plane.cs" id="1_0vylf"]
 [ext_resource type="ArrayMesh" uid="uid://ccyo5xcy8pjwu" path="res://meshes/paper_airplane_mesh.res" id="1_cvnx6"]
+[ext_resource type="Script" path="res://PlaneArea.cs" id="3_jrhop"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_recnw"]
 friction = 0.55
@@ -39,8 +40,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.381483)
 
 [node name="Plane Root" type="Node3D" parent="."]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["pushable"]]
+script = ExtResource("3_jrhop")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0557861, 0, 0.0953217)
 shape = SubResource("BoxShape3D_cn2ax")
+
+[connection signal="Pushed" from="Area3D" to="." method="OnArea3DPushed"]
