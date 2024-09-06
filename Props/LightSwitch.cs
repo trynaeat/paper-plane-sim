@@ -9,7 +9,7 @@ public partial class LightSwitch : Switch
 	{
 		base._Ready();
 		this._pivot = GetNode<Node3D>("Pivot");
-		if (this._on) {
+		if (this.On) {
 			this._pivot.RotateX(Mathf.DegToRad(-31));
 		} else
 		{
@@ -25,7 +25,7 @@ public partial class LightSwitch : Switch
 	protected override void _OnFlip()
 	{
 		Vector3 targetRotation;
-		if (this._on)
+		if (this.On)
 		{
 			targetRotation = new Vector3(-31, 0, 0);
 		}

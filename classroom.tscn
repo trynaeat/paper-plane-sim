@@ -693,8 +693,13 @@ transform = Transform3D(0.748, 0, 0, 0, 0.748, 0, 0, 0, 0.748, 2.78553, 2.64276,
 SwitchChannel = 1
 
 [node name="desk_fan" parent="." instance=ExtResource("16_8hr73")]
-transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 2.70561, 2.37246, 9.82419)
+transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 2.70561, 2.37246, 10.4622)
 FanRotation = Vector2(-25, 0)
+On = true
+
+[node name="desk_fan2" parent="." instance=ExtResource("16_8hr73")]
+transform = Transform3D(0.281186, 0, 0.104567, 0, 0.3, 0, -0.104567, 0, 0.281186, -0.614242, 1.14847, 1.93031)
+FanRotation = Vector2(-15.805, 12.665)
 
 [connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight" method="OnLightSwitchSwitched"]
 [connection signal="Switched" from="LightSwitch" to="Ceiling/CeilingLight3" method="OnLightSwitchSwitched"]

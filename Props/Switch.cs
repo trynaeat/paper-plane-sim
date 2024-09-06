@@ -15,7 +15,6 @@ public abstract partial class Switch : Node3D
 	public AudioStream SoundLow = null;
 	[Signal]
 	public delegate void SwitchedEventHandler(int switchChannel, bool state);
-	protected bool _on = false;
 	private bool _waitDebounce = false;
 	private Timer _hitTimer;
 	private AudioStreamPlayer3D _audio;
@@ -23,7 +22,6 @@ public abstract partial class Switch : Node3D
 	public override void _Ready()
 	{
 		// Set initial state
-		this._on = On;
 		// Setup debounce timer
 		this._hitTimer = new Timer();
 		this._hitTimer.OneShot = true;
@@ -40,7 +38,7 @@ public abstract partial class Switch : Node3D
 
 		// Listen to hitbox for collision
 		HitBox.AreaEntered += OnAreaEntered;
-		EmitSignal(SignalName.Switched, SwitchChannel, _on);
+		EmitSignal(SignalName.Switched, SwitchChannel, On);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,10 +63,10 @@ public abstract partial class Switch : Node3D
 
 	private void _flipSwitch()
 	{
-		this._on = !this._on;
+		this.On = !this.On;
 		this._waitDebounce = true;
 		_hitTimer.Start();
-		if (this._on && this._audio != null)
+		if (this.On && this._audio != null)
 		{
 			this._audio.Stream = SoundHigh;
 		} else if (this._audio != null)
@@ -79,7 +77,7 @@ public abstract partial class Switch : Node3D
 		{
 			this._audio.Play();
 		}
-		EmitSignal(SignalName.Switched, SwitchChannel, _on);
+		EmitSignal(SignalName.Switched, SwitchChannel, On);
 		_OnFlip();
 	}
 }
