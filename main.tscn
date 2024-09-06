@@ -63,8 +63,11 @@ ScrollSensitivity = 0.1
 
 [node name="Plane" parent="." instance=ExtResource("2_m40eh")]
 transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, -63.1661, 34.558, -72.8111)
-mass = 3.0
 linear_velocity = Vector3(0, 0, 0)
+LiftCoeff = 0.2
+DragCoeff = Vector3(1, 2, 0.006)
+RollForce = 3.0
+PitchForce = 0.4
 
 [node name="DebugOverlay" parent="." instance=ExtResource("6_ye7el")]
 
