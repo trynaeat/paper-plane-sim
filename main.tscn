@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Main.cs" id="1_yk1bs"]
 [ext_resource type="Texture2D" uid="uid://doxm181if60yp" path="res://Textures/terrain_scene_diffuse.png" id="4_v11i4"]
-[ext_resource type="PackedScene" uid="uid://cq0uky4srofsl" path="res://spawner.tscn" id="5_2ybya"]
+[ext_resource type="PackedScene" uid="uid://nuqi6lxkwqcv" path="res://player.tscn" id="6_2jryr"]
 [ext_resource type="PackedScene" uid="uid://d31ko3iuvodne" path="res://debug_overlay.tscn" id="6_ye7el"]
 [ext_resource type="PackedScene" uid="uid://dogmimuuq32wv" path="res://classroom.tscn" id="7_yq11h"]
 
@@ -58,5 +58,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fvj87")
 [node name="Classroom" parent="." instance=ExtResource("7_yq11h")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -158.83, 0, -125.982)
 
-[node name="Spawner" parent="." instance=ExtResource("5_2ybya")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -61.3099, 40.7768, -50.3051)
+[node name="Player" parent="." instance=ExtResource("6_2jryr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -68.9944, 15.6345, -72.6665)

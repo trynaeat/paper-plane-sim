@@ -26,6 +26,7 @@ public partial class FollowCamPivot : Node3D
 	public override void _Ready()
 	{
 		Camera = GetNode<Camera3D>("FollowCam");
+		RotationDegrees = new Vector3(0, 90, 0);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,4 +56,9 @@ public partial class FollowCamPivot : Node3D
 			Rotate(GlobalTransform.Basis.X, Mathf.DegToRad(eventMouseButton.Relative.Y * MouseSensitivity));
 		}
     }
+
+	public void ResetRotation ()
+	{
+		RotationDegrees = new Vector3(0, 90, 0);
+	}
 }

@@ -8,5 +8,4 @@ script = ExtResource("1_7f3sa")
 
 [node name="FollowCam" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.874)
-current = true
 script = ExtResource("1_5132r")

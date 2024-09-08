@@ -14,9 +14,7 @@ public partial class Main : Node
 	{
 		_planeScene = GD.Load<PackedScene>("res://plane.tscn");
 		_debug = GetNode<DebugOverlay>("DebugOverlay");
-		_spawner = GetNode<Spawner>("Spawner");
 		Input.MouseMode = Input.MouseModeEnum.Captured;
-		_spawner.SpawnPlayerPlane();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,12 +28,6 @@ public partial class Main : Node
 		if (Input.IsActionJustPressed("click_mouse"))
 		{
 			Input.MouseMode = Input.MouseModeEnum.Captured;
-		}
-
-		// Respawn
-		if (Input.IsActionJustPressed("respawn"))
-		{
-			_spawner.SpawnPlayerPlane();
 		}
 	}
 }

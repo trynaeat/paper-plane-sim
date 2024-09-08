@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.NativeInterop;
 
 public partial class Plane : RigidBody3D
 {
@@ -38,6 +39,7 @@ public partial class Plane : RigidBody3D
     [Export]
     public Vector3 ThrustVec { get; set; }
     private double _aoa = 0;
+    private bool _active = true;
 
     public override void _Ready()
     {
@@ -76,6 +78,11 @@ public partial class Plane : RigidBody3D
 
     private void DoRoll ()
     {
+        // Process user inputs
+        if (!this._active)
+        {
+            return;
+        }
         Vector3 forward = -1 * GlobalTransform.Basis.Z;
         if (Input.IsActionPressed("bank_left"))
         {
@@ -95,6 +102,11 @@ public partial class Plane : RigidBody3D
        }
        float speed = LinearVelocity.Length();
        Vector3 right = GlobalTransform.Basis.X;
+       if (!this._active)
+       {
+        return;
+       }
+       // Process user inputs
        if (Input.IsActionPressed("pitch_up"))
        {
         ApplyTorque(PitchForce * speed * right);
@@ -154,5 +166,15 @@ public partial class Plane : RigidBody3D
     public void OnArea3DPushed(float x, float y, float z)
     {
         ApplyForce(new Vector3(x, y, z));
+    }
+
+    public void Activate ()
+    {
+        this._active = true;
+    }
+
+    public void Deactivate ()
+    {
+        this._active = false;
     }
 }

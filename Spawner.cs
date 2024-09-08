@@ -16,17 +16,15 @@ public partial class Spawner : Node3D
 	{
 	}
 
-	public void SpawnPlayerPlane ()
+	public Plane SpawnPlayerPlane ()
 	{
 		// Create a new one
 		Plane newPlayer = _planeScene.Instantiate<Plane>();
-		newPlayer.Transform = Transform;
+		newPlayer.GlobalTransform = GlobalTransform;
 		this._activePlayer = newPlayer;
-		// Attach camera to it
-		FollowCamGlobal.Camera.Target = newPlayer;
-		FollowCamGlobal.Camera.Camera.Current = true;
 		GetTree().CurrentScene.AddChild(newPlayer);
 		newPlayer.Name = "Plane";
 		newPlayer.PhysicsUpdate += DebugOverlay.Overlay.OnPhysicsUpdate;
+		return newPlayer;
 	}
 }

@@ -1,5 +1,32 @@
-[gd_scene format=3 uid="uid://nuqi6lxkwqcv"]
+[gd_scene load_steps=4 format=3 uid="uid://nuqi6lxkwqcv"]
+
+[ext_resource type="Script" path="res://Player.cs" id="1_cv0uu"]
+[ext_resource type="PackedScene" uid="uid://cq0uky4srofsl" path="res://spawner.tscn" id="2_ls7lg"]
+[ext_resource type="Texture2D" uid="uid://bio1tmbmlagwe" path="res://Textures/crosshair.png" id="3_16vl7"]
 
 [node name="Player" type="Node3D"]
+script = ExtResource("1_cv0uu")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+current = true
+
+[node name="Spawner" parent="." instance=ExtResource("2_ls7lg")]
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerUI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_16vl7")
