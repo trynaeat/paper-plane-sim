@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DebugOverlay="*res://debug_overlay.tscn"
+FollowCamGlobal="*res://FollowCamGlobal.cs"
 
 [dotnet]
 

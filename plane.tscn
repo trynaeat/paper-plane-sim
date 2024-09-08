@@ -21,12 +21,12 @@ linear_velocity = Vector3(0, 0, -40)
 script = ExtResource("1_0vylf")
 FallAcceleration = 9.8
 LiftCoeff = 0.15
-DragCoeff = Vector3(1, 2, 0.015)
+DragCoeff = Vector3(1, 2, 0.006)
 DragDistance = 0.3
 StartSpeed = 40
 CriticalAoA = 20
-RollForce = 6.0
-PitchForce = 0.8
+RollForce = 4.0
+PitchForce = 0.6
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_cvnx6")

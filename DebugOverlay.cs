@@ -5,6 +5,7 @@ public partial class DebugOverlay : CanvasLayer
 {
 	public static Control Draw {get; set; } = null;
 	// Called when the node enters the scene tree for the first time.
+	public static DebugOverlay Overlay = null;
 
 	private Label _velocity;
 	private Label _altitude;
@@ -17,6 +18,7 @@ public partial class DebugOverlay : CanvasLayer
 		_altitude = GetNode<Label>("DebugContainer/Altitude");
 		_aoa = GetNode<Label>("DebugContainer/AoA");
 		_fps = GetNode<Label>("DebugContainer/FPS");
+		Overlay = this;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

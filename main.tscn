@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwtr42wxt46ng"]
+[gd_scene load_steps=14 format=3 uid="uid://cwtr42wxt46ng"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_yk1bs"]
-[ext_resource type="PackedScene" uid="uid://b0bmyfniabdn1" path="res://plane.tscn" id="2_m40eh"]
 [ext_resource type="Texture2D" uid="uid://doxm181if60yp" path="res://Textures/terrain_scene_diffuse.png" id="4_v11i4"]
-[ext_resource type="PackedScene" uid="uid://cr30l5quwv3mk" path="res://follow_cam.tscn" id="5_w4y0u"]
+[ext_resource type="PackedScene" uid="uid://cq0uky4srofsl" path="res://spawner.tscn" id="5_2ybya"]
 [ext_resource type="PackedScene" uid="uid://d31ko3iuvodne" path="res://debug_overlay.tscn" id="6_ye7el"]
 [ext_resource type="PackedScene" uid="uid://dogmimuuq32wv" path="res://classroom.tscn" id="7_yq11h"]
 
@@ -54,22 +53,10 @@ transform = Transform3D(8192, 0, 0, 0, 1, 0, 0, 0, 8192, 0, -9.96194, 0)
 mesh = SubResource("BoxMesh_u52ua")
 surface_material_override/0 = SubResource("StandardMaterial3D_fvj87")
 
-[node name="FollowCam" parent="." node_paths=PackedStringArray("Target") instance=ExtResource("5_w4y0u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200.607, 4.60335)
-Target = NodePath("../Plane")
-LockZ = true
-MouseSensitivity = -0.08
-ScrollSensitivity = 0.1
-
-[node name="Plane" parent="." instance=ExtResource("2_m40eh")]
-transform = Transform3D(0.118213, 0, 0.992988, 0, 1, 0, -0.992988, 0, 0.118213, -63.1661, 34.558, -72.8111)
-linear_velocity = Vector3(0, 0, 0)
-LiftCoeff = 0.2
-DragCoeff = Vector3(1, 2, 0.006)
-RollForce = 3.0
-PitchForce = 0.4
-
 [node name="DebugOverlay" parent="." instance=ExtResource("6_ye7el")]
 
 [node name="Classroom" parent="." instance=ExtResource("7_yq11h")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -158.83, 0, -125.982)
+
+[node name="Spawner" parent="." instance=ExtResource("5_2ybya")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -61.3099, 40.7768, -50.3051)

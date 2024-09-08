@@ -19,10 +19,13 @@ public partial class FollowCamPivot : Node3D
 		get => GetNode<FollowCam>("FollowCam").ScrollSensitivity;
 		set => GetNode<FollowCam>("FollowCam").ScrollSensitivity = value;
 	}
+	
+	public Camera3D Camera;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		Camera = GetNode<Camera3D>("FollowCam");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
