@@ -39,6 +39,7 @@ public partial class Plane : RigidBody3D
     [Export]
     public Vector3 ThrustVec { get; set; }
     private double _aoa = 0;
+    private double _aoaSigned = 0;
     private bool _active = true;
 
     public override void _Ready()
@@ -57,7 +58,8 @@ public partial class Plane : RigidBody3D
         float speed = LinearVelocity.Length();
         Vector3 forward = -1 * this.Basis.Z;
         Vector3 forwardGlobal = -1 * GlobalBasis.Z;
-        this._aoa = Mathf.Abs(forward.AngleTo(LinearVelocity) * (180.0 / Math.PI));
+        this._aoaSigned = forward.SignedAngleTo(LinearVelocity, GlobalBasis.X * -1) * (180.0 / Math.PI);
+        this._aoa = Mathf.Abs(this._aoaSigned);
         if (LinearVelocity.Length() < 0.1) {
             this._aoa = 90;
         }
@@ -73,7 +75,7 @@ public partial class Plane : RigidBody3D
         ApplyForce(lift);
         ApplyForce(drag, -1 * forwardGlobal * DragDistance);
         ApplyForce(thrust);
-        EmitSignal(SignalName.PhysicsUpdate, speed, GlobalPosition.Y, _aoa);
+        EmitSignal(SignalName.PhysicsUpdate, speed, GlobalPosition.Y, _aoaSigned);
     }
 
     private void DoRoll ()
@@ -121,6 +123,11 @@ public partial class Plane : RigidBody3D
     {
         float liftForce = LiftCoeff * speed * speed * getCL((float)this._aoa) / 2;
         Vector3 lift = GlobalTransform.Basis.Y * liftForce;
+        // Lift points down if negative aoa
+        if (this._aoaSigned < 0)
+        {
+            lift = -1 * lift;
+        }
         this.Lift = lift;
         return lift;
     }
