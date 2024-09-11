@@ -57,7 +57,8 @@ public partial class Player : Node3D
 			Plane newPlane = this._spawner.SpawnPlayerPlane();
 			FollowCamGlobal.Camera.Target = newPlane;
 			FollowCamGlobal.Camera.Camera.Current = true;
-			FollowCamGlobal.Camera.GlobalTransform = newPlane.GlobalTransform;
+			FollowCamGlobal.Camera.GlobalTransform = GlobalTransform;
+			FollowCamGlobal.Camera.StartChase();
 			_active = false;
 			_activePlane = newPlane;
 			this._playerCam.ClearCurrent();

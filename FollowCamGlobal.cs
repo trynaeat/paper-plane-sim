@@ -11,6 +11,8 @@ public partial class FollowCamGlobal : Node
 	{
 		_camScene = GD.Load<PackedScene>("res://follow_cam.tscn");
 		_camera = this._camScene.Instantiate<FollowCamPivot>();
+		_camera.ChaseDistance = 5;
+		_camera.ChaseSpeed = 40;
 		GetTree().CurrentScene.AddChild(_camera);
 	}
 

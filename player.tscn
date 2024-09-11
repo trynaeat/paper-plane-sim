@@ -11,6 +11,7 @@ script = ExtResource("1_cv0uu")
 current = true
 
 [node name="Spawner" parent="." instance=ExtResource("2_ls7lg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15039)
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]
 
