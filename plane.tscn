@@ -7,16 +7,18 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_recnw"]
 friction = 0.55
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_r5sdi"]
-size = Vector3(1, 0.367676, 3.32092)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_cn2ax"]
 size = Vector3(1.88403, 1, 3.64944)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d8q87"]
+points = PackedVector3Array(0.824403, 0.0126244, 1.65944, 0.824403, -0.0070571, 1.65944, 0.00145257, 0.0126244, -1.66882, -0.824403, 0.0126244, 1.65944, 0.0631052, -0.380851, 1.65944, 5.96046e-08, -0.00836664, -1.66882, 0.00145257, -0.0070571, -1.66882, -0.00161391, 0.0126244, -1.66882, -0.824403, -0.0070571, 1.65944, -0.0632666, -0.380851, 1.65944, -0.00016135, -0.00836664, -1.66882, -0.00161391, -0.0070571, -1.66882)
 
 [node name="Plane" type="RigidBody3D"]
 mass = 1.5
 physics_material_override = SubResource("PhysicsMaterial_recnw")
 gravity_scale = 0.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.12, 0)
 linear_velocity = Vector3(0, 0, -40)
 script = ExtResource("1_0vylf")
 FallAcceleration = 9.8
@@ -25,15 +27,11 @@ DragCoeff = Vector3(1, 2, 0.006)
 DragDistance = 0.3
 StartSpeed = 40
 CriticalAoA = 20
-RollForce = 4.0
-PitchForce = 0.6
+RollForce = 6.0
+PitchForce = 0.7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_cvnx6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.130615, 0.00384521)
-shape = SubResource("BoxShape3D_r5sdi")
 
 [node name="COMPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.381483)
@@ -46,5 +44,8 @@ script = ExtResource("3_jrhop")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0557861, 0, 0.0953217)
 shape = SubResource("BoxShape3D_cn2ax")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_d8q87")
 
 [connection signal="Pushed" from="Area3D" to="." method="OnArea3DPushed"]

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://chn2uelabeqxn"]
+
+[ext_resource type="Texture2D" uid="uid://ccd6bcuig7q7w" path="res://Textures/Walls/WallBrick2_Normal.png" id="1_k17fx"]
+
+[resource]
+albedo_color = Color(0.452653, 0.538778, 1, 1)
+roughness = 0.77
+normal_enabled = true
+normal_texture = ExtResource("1_k17fx")
