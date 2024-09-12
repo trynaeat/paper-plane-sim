@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://q23kviis6cv8"]
+
+[ext_resource type="Material" uid="uid://b01gpc3t5bkrg" path="res://Materials/WoodPlank.tres" id="1_4c5nl"]
+[ext_resource type="ArrayMesh" uid="uid://b7l4i120hftiv" path="res://meshes/Generic/Floor_Generic_8x8_Plane_029.res" id="2_cy012"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dj5nu"]
+points = PackedVector3Array(-4, 0, -4, -4, 0, 4, 4, 0, -4, 4, 0, 4)
+
+[node name="FloorWoodPlank8x8" type="StaticBody3D"]
+
+[node name="FloorGeneric8x8Plane029" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_4c5nl")
+mesh = ExtResource("2_cy012")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_dj5nu")

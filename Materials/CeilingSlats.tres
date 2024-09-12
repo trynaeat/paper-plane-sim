@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://ubijpx7xqoi7"]
+
+[ext_resource type="Texture2D" uid="uid://b5fifq2o867c3" path="res://Textures/Ceilings/Ceiling_Slats_BaseColor.png" id="1_gmjs2"]
+[ext_resource type="Texture2D" uid="uid://stb8rxh8p4d0" path="res://Textures/Ceilings/Ceiling_Slats_Normal.png" id="2_fnnkf"]
+[ext_resource type="Texture2D" uid="uid://dl3wxxixdoost" path="res://Textures/Ceilings/Ceiling_Slats_Roghness.png" id="3_6dpiq"]
+
+[resource]
+albedo_texture = ExtResource("1_gmjs2")
+roughness_texture = ExtResource("3_6dpiq")
+normal_enabled = true
+normal_texture = ExtResource("2_fnnkf")

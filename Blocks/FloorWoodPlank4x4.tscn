@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3ti48xe55wey"]
+
+[ext_resource type="Material" uid="uid://b01gpc3t5bkrg" path="res://Materials/WoodPlank.tres" id="1_w4acu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rs2tt"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2ygih"]
+_surfaces = [{
+"aabb": AABB(-2, 0, -2, 4, 1e-05, 4),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_aqqx2"]
+resource_name = "Floor_Generic_4x4_Plane_027"
+_surfaces = [{
+"aabb": AABB(-2, 0, -2, 4, 1e-05, 4),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_rs2tt"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2ygih")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0ra2q"]
+points = PackedVector3Array(-2, 0, -2, -2, 0, 2, 2, 0, -2, 2, 0, 2)
+
+[node name="FloorWoodPlank4x4" type="StaticBody3D"]
+
+[node name="FloorGeneric4x4Plane027" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_aqqx2")
+surface_material_override/0 = ExtResource("1_w4acu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_0ra2q")

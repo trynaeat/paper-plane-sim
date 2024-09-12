@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://doevwnj7fh74d"]
+
+[ext_resource type="ArrayMesh" uid="uid://tm63g2jcq7pc" path="res://meshes/rafters_2x8_Plane_028.res" id="1_cped8"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_i828a"]
+points = PackedVector3Array(4, 2, 0.25, 4, 0, 0.25, 4, 2, -0.25, -4, 2, 0.25, 4, 0, -0.25, -4, 0, 0.25, -4, 2, -0.25, -4, 0, -0.25)
+
+[node name="Rafters" type="StaticBody3D"]
+
+[node name="Rafters2x8Plane028" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_cped8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_i828a")

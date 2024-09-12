@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://bd4aw6niskxwl"]
+
+[ext_resource type="ArrayMesh" uid="uid://b6lhcos7j5ai6" path="res://meshes/Generic/Floor_Generic_4x4_Plane_027.res" id="1_jlckv"]
+[ext_resource type="Texture2D" uid="uid://b5fifq2o867c3" path="res://Textures/Ceilings/Ceiling_Slats_BaseColor.png" id="2_30cnb"]
+[ext_resource type="Texture2D" uid="uid://stb8rxh8p4d0" path="res://Textures/Ceilings/Ceiling_Slats_Normal.png" id="3_gdaw8"]
+[ext_resource type="Texture2D" uid="uid://dl3wxxixdoost" path="res://Textures/Ceilings/Ceiling_Slats_Roghness.png" id="4_5u55o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1lkw"]
+albedo_texture = ExtResource("2_30cnb")
+roughness_texture = ExtResource("4_5u55o")
+normal_enabled = true
+normal_texture = ExtResource("3_gdaw8")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_pqmd0"]
+points = PackedVector3Array(-2, 0, -2, -2, 0, 2, 2, 0, -2, 2, 0, 2)
+
+[node name="CeilingSlats4x4" type="StaticBody3D"]
+
+[node name="FloorGeneric4x4Plane027" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_jlckv")
+surface_material_override/0 = SubResource("StandardMaterial3D_t1lkw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_pqmd0")

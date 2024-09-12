@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://crf5w8i4hnm0f"]
 
 [ext_resource type="ArrayMesh" uid="uid://ciiinyb1woe2w" path="res://meshes/Generic/Wall_Generic_2x4_Cube_004.res" id="1_xek7i"]
-[ext_resource type="Material" uid="uid://chn2uelabeqxn" path="res://Materials/WallBrickBlue.tres" id="2_ai7sk"]
+[ext_resource type="Material" uid="uid://baaxj2ud0qv7" path="res://Materials/WallBrick_2.tres" id="2_cqhla"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wlq47"]
 points = PackedVector3Array(-1, 0, 0, 1, 0, 0, -1, 0, 1, -1, 4, 0, 1, 0, 1, 1, 4, 0, -1, 4, 1, 1, 4, 1)
@@ -11,7 +11,7 @@ points = PackedVector3Array(-1, 0, 0, 1, 0, 0, -1, 0, 1, -1, 4, 0, 1, 0, 1, 1, 4
 [node name="WallGeneric2x4Cube004" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 mesh = ExtResource("1_xek7i")
-surface_material_override/0 = ExtResource("2_ai7sk")
+surface_material_override/0 = ExtResource("2_cqhla")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
