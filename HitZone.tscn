@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1ntf71lev6d4"]
+
+[ext_resource type="Script" path="res://HitZone.cs" id="1_1rx8e"]
+[ext_resource type="ArrayMesh" uid="uid://qixkbwgavd07" path="res://meshes/hit_zone_Cylinder_001.res" id="1_gw3ah"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_wa7ro"]
+height = 0.243447
+radius = 0.941974
+
+[node name="HitZone" type="Node3D"]
+script = ExtResource("1_1rx8e")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_gw3ah")
+
+[node name="HitArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0878341, 0)
+shape = SubResource("CylinderShape3D_wa7ro")
+
+[connection signal="area_entered" from="HitArea" to="." method="OnAreaEntered"]

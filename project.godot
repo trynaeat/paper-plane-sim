@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 DebugOverlay="*res://debug_overlay.tscn"
 FollowCamGlobal="*res://FollowCamGlobal.cs"
+Scoring="*res://Scoring.cs"
 
 [display]
 
@@ -32,6 +33,7 @@ project/assembly_name="Paper Plane Sim"
 [global_group]
 
 pushable="Physics bodies that can be pushed by a fan"
+planes=""
 
 [input]
 

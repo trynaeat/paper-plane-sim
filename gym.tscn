@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bskm67lyj273l"]
+[gd_scene load_steps=13 format=3 uid="uid://bskm67lyj273l"]
 
 [ext_resource type="PackedScene" uid="uid://dskdkv5vv3bp4" path="res://Blocks/WallBrick2_4x4.tscn" id="1_wo62p"]
 [ext_resource type="PackedScene" uid="uid://c21tkfubema1x" path="res://Blocks/WallBrickBlue_4x2.tscn" id="2_d7u6a"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcxq3lvbnmo8o" path="res://Blocks/CeilingSlats8x8.tscn" id="9_ryb7x"]
 [ext_resource type="PackedScene" uid="uid://doevwnj7fh74d" path="res://Blocks/Rafters2x8.tscn" id="10_wf05c"]
 [ext_resource type="PackedScene" uid="uid://8v6dgisnee43" path="res://Props/BasketballHoop.tscn" id="11_770w2"]
+[ext_resource type="PackedScene" uid="uid://dmg7brw3yryfo" path="res://ScoreZone.tscn" id="12_hu781"]
 
 [node name="Gym" type="Node3D"]
 
@@ -736,3 +737,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32, 8
 
 [node name="BasketballHoop" parent="." instance=ExtResource("11_770w2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 3, 16)
+
+[node name="ScoreZone" parent="." instance=ExtResource("12_hu781")]
+transform = Transform3D(1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, 0.714811, 0.0716767, 21.2633)

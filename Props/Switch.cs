@@ -1,5 +1,6 @@
 using Godot;
 
+[Tool]
 public abstract partial class Switch : Node3D
 {
 	// Sets starting state

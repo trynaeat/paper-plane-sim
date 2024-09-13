@@ -38,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.381483)
 
 [node name="Plane Root" type="Node3D" parent="."]
 
-[node name="Area3D" type="Area3D" parent="." groups=["pushable"]]
+[node name="Area3D" type="Area3D" parent="." groups=["planes", "pushable"]]
 script = ExtResource("3_jrhop")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]

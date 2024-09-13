@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmg7brw3yryfo"]
+
+[ext_resource type="Script" path="res://ScoreZone.cs" id="1_6cahi"]
+[ext_resource type="PackedScene" uid="uid://d1ntf71lev6d4" path="res://HitZone.tscn" id="1_nixhu"]
+
+[node name="ScoreZone" type="Node3D"]
+script = ExtResource("1_6cahi")
+
+[node name="HitZone" parent="." instance=ExtResource("1_nixhu")]
+
+[connection signal="PlaneHit" from="HitZone" to="." method="OnPlaneHit"]
