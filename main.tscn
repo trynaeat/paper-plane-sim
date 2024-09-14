@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwtr42wxt46ng"]
+[gd_scene load_steps=15 format=3 uid="uid://cwtr42wxt46ng"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_yk1bs"]
 [ext_resource type="Texture2D" uid="uid://doxm181if60yp" path="res://Textures/terrain_scene_diffuse.png" id="4_v11i4"]
 [ext_resource type="PackedScene" uid="uid://nuqi6lxkwqcv" path="res://player.tscn" id="6_2jryr"]
+[ext_resource type="PackedScene" uid="uid://dkjtk526phdba" path="res://gym.tscn" id="6_065x6"]
 [ext_resource type="PackedScene" uid="uid://d31ko3iuvodne" path="res://debug_overlay.tscn" id="6_ye7el"]
 [ext_resource type="PackedScene" uid="uid://dogmimuuq32wv" path="res://classroom.tscn" id="7_yq11h"]
 
@@ -61,15 +62,5 @@ transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -158.83, 0, -125.982)
 [node name="Player" parent="." instance=ExtResource("6_2jryr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -68.9944, 57.6345, -309.667)
 
-[node name="Gym" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -149, 0, -566)
-script = null
+[node name="Gym" parent="." instance=ExtResource("6_065x6")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -113, -9, -537)

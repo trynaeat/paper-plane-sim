@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://co6km8qo3wqdo"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnoaiwvx1qq6p" path="res://meshes/bball_lines_1_Plane_033.res" id="1_dvf5u"]
+[ext_resource type="Texture2D" uid="uid://bdxn0l6sl0nk7" path="res://Textures/bball_lines_1_bball_lines1.png" id="2_hiwkw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x3xhv"]
+transparency = 1
+albedo_texture = ExtResource("2_hiwkw")
+
+[node name="BballLines1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_dvf5u")
+surface_material_override/0 = SubResource("StandardMaterial3D_x3xhv")

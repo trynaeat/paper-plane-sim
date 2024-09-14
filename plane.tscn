@@ -19,6 +19,7 @@ physics_material_override = SubResource("PhysicsMaterial_recnw")
 gravity_scale = 0.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.12, 0)
+continuous_cd = true
 linear_velocity = Vector3(0, 0, -40)
 script = ExtResource("1_0vylf")
 FallAcceleration = 9.8
@@ -27,7 +28,7 @@ DragCoeff = Vector3(1, 2, 0.006)
 DragDistance = 0.3
 StartSpeed = 40
 CriticalAoA = 20
-RollForce = 6.0
+RollForce = 4.0
 PitchForce = 0.7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

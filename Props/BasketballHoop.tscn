@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://8v6dgisnee43"]
+[gd_scene load_steps=7 format=3 uid="uid://8v6dgisnee43"]
 
 [ext_resource type="ArrayMesh" uid="uid://cceqeumfxins3" path="res://meshes/BasketballHoop/bball_hoop_Plane_030.res" id="1_pl6yx"]
 [ext_resource type="ArrayMesh" uid="uid://b88gf53n8emrp" path="res://meshes/BasketballHoop/bball_hoop_Plane_031.res" id="2_4mmtm"]
 [ext_resource type="Material" uid="uid://d12lldnqwcdkk" path="res://Materials/Glass.tres" id="2_jq5pr"]
+[ext_resource type="PackedScene" uid="uid://cwh6vxbyyk66l" path="res://Props/BBallHoopNet.tscn" id="4_jphqo"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r44ap"]
 points = PackedVector3Array(-1, -0.138593, -1.33, -1, -0.138593, -1.19209e-07, -1, -5.96046e-08, -1.33, 1, -0.138593, -1.33, -1, -1.36197e-05, -1.19209e-07, 1, -0.138593, -1.19209e-07, -0.920713, -5.96046e-08, -1.25059, 1, -5.96046e-08, -1.33, 1, -1.36197e-05, -1.19209e-07, 0.920517, -5.96046e-08, -1.25059)
@@ -28,3 +29,5 @@ mesh = ExtResource("2_4mmtm")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("ConcavePolygonShape3D_assii")
+
+[node name="bball_hoop_net" parent="." instance=ExtResource("4_jphqo")]
