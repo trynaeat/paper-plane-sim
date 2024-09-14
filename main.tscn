@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://doxm181if60yp" path="res://Textures/terrain_scene_diffuse.png" id="4_v11i4"]
 [ext_resource type="PackedScene" uid="uid://nuqi6lxkwqcv" path="res://player.tscn" id="6_2jryr"]
 [ext_resource type="PackedScene" uid="uid://dkjtk526phdba" path="res://gym.tscn" id="6_065x6"]
+[ext_resource type="PackedScene" uid="uid://cmuskji61n4ae" path="res://classroom.tscn" id="6_67ke7"]
 [ext_resource type="PackedScene" uid="uid://d31ko3iuvodne" path="res://debug_overlay.tscn" id="6_ye7el"]
-[ext_resource type="PackedScene" uid="uid://dogmimuuq32wv" path="res://classroom.tscn" id="7_yq11h"]
 
 [sub_resource type="Gradient" id="Gradient_dy06c"]
 offsets = PackedFloat32Array(0.496855, 0.968553, 1)
@@ -56,11 +56,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_fvj87")
 
 [node name="DebugOverlay" parent="." instance=ExtResource("6_ye7el")]
 
-[node name="Classroom" parent="." instance=ExtResource("7_yq11h")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -158.83, 0, -125.982)
-
 [node name="Player" parent="." instance=ExtResource("6_2jryr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -68.9944, 57.6345, -309.667)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -51.9944, 34.6345, -69.667)
 
 [node name="Gym" parent="." instance=ExtResource("6_065x6")]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -113, -9, -537)
+transform = Transform3D(-3.49691e-07, 0, -8, 0, 8, 0, 8, 0, -3.49691e-07, 278, 0, -187)
+
+[node name="Classroom" parent="." instance=ExtResource("6_67ke7")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -154, 0, -86)

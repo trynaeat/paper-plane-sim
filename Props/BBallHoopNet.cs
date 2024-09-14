@@ -13,7 +13,7 @@ public partial class BBallHoopNet : Node3D
 		bones.Add("Bone.002");
 		bones.Add("Bone.003");
 		bones.Add("Bone.004");
-		_sim.PhysicalBonesStartSimulation(bones);
+		// _sim.PhysicalBonesStartSimulation(bones);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
