@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DebugOverlay="*res://debug_overlay.tscn"
 FollowCamGlobal="*res://FollowCamGlobal.cs"
 Scoring="*res://Scoring.cs"
+UiOverlay="*res://ui_overlay.tscn"
 
 [display]
 

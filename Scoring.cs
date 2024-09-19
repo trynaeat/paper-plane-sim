@@ -5,6 +5,10 @@ public partial class Scoring : Node
 {
 	private static Scoring _instance;
 	public static Scoring Instance { get => _instance; }
+
+	public int Score { get => _score; }
+
+	private int _score = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -18,7 +22,7 @@ public partial class Scoring : Node
 
 	public void AddScore (int score)
 	{
-		GD.Print(score);
+		_score += score;
 		// TODO actual scoring
 	}
 }

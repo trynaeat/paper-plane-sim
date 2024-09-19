@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0bmyfniabdn1"]
+[gd_scene load_steps=8 format=3 uid="uid://b0bmyfniabdn1"]
 
 [ext_resource type="Script" path="res://Plane.cs" id="1_0vylf"]
 [ext_resource type="ArrayMesh" uid="uid://ccyo5xcy8pjwu" path="res://meshes/paper_airplane_mesh.res" id="1_cvnx6"]
 [ext_resource type="Script" path="res://PlaneArea.cs" id="3_jrhop"]
+[ext_resource type="Script" path="res://PlaneTracker.cs" id="4_a4gm2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_recnw"]
 friction = 0.55
@@ -20,6 +21,8 @@ gravity_scale = 0.0
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.12, 0)
 continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 3
 linear_velocity = Vector3(0, 0, -40)
 script = ExtResource("1_0vylf")
 FallAcceleration = 9.8
@@ -48,5 +51,9 @@ shape = SubResource("BoxShape3D_cn2ax")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_d8q87")
+
+[node name="PlaneTracker" type="Node3D" parent="." node_paths=PackedStringArray("Plane")]
+script = ExtResource("4_a4gm2")
+Plane = NodePath("..")
 
 [connection signal="Pushed" from="Area3D" to="." method="OnArea3DPushed"]

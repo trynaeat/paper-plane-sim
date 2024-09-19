@@ -1,7 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1ntf71lev6d4"]
+[gd_scene load_steps=5 format=3 uid="uid://d1ntf71lev6d4"]
 
 [ext_resource type="Script" path="res://HitZone.cs" id="1_1rx8e"]
 [ext_resource type="ArrayMesh" uid="uid://qixkbwgavd07" path="res://meshes/hit_zone_Cylinder_001.res" id="1_gw3ah"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18yq7"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.960784, 0.623529, 0, 0.141176)
+emission_enabled = true
+emission = Color(0.945098, 0.54902, 0.254902, 1)
+emission_energy_multiplier = 5.45
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wa7ro"]
 height = 0.243447
@@ -12,6 +20,7 @@ script = ExtResource("1_1rx8e")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_gw3ah")
+surface_material_override/0 = SubResource("StandardMaterial3D_18yq7")
 
 [node name="HitArea" type="Area3D" parent="."]
 

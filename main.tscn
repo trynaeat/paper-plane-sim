@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwtr42wxt46ng"]
+[gd_scene load_steps=16 format=3 uid="uid://cwtr42wxt46ng"]
 
 [ext_resource type="Script" path="res://Main.cs" id="1_yk1bs"]
 [ext_resource type="Texture2D" uid="uid://doxm181if60yp" path="res://Textures/terrain_scene_diffuse.png" id="4_v11i4"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dkjtk526phdba" path="res://gym.tscn" id="6_065x6"]
 [ext_resource type="PackedScene" uid="uid://cmuskji61n4ae" path="res://classroom.tscn" id="6_67ke7"]
 [ext_resource type="PackedScene" uid="uid://d31ko3iuvodne" path="res://debug_overlay.tscn" id="6_ye7el"]
+[ext_resource type="PackedScene" uid="uid://d1vheg3ky3def" path="res://ui_overlay.tscn" id="7_acyg4"]
 
 [sub_resource type="Gradient" id="Gradient_dy06c"]
 offsets = PackedFloat32Array(0.496855, 0.968553, 1)
@@ -64,3 +65,5 @@ transform = Transform3D(-3.49691e-07, 0, -8, 0, 8, 0, 8, 0, -3.49691e-07, 278, 0
 
 [node name="Classroom" parent="." instance=ExtResource("6_67ke7")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -154, 0, -86)
+
+[node name="UIOverlay" parent="." instance=ExtResource("7_acyg4")]

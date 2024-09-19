@@ -38,6 +38,8 @@ public partial class Player : Node3D
 			_active = true;
 			_ui.Visible = true;
 			_playerCam.Current = true;
+
+			UiOverlay.Instance.UnsetTrackedPlane();
 		}
 		if (!_active)
 		{
@@ -63,6 +65,9 @@ public partial class Player : Node3D
 			_activePlane = newPlane;
 			this._playerCam.ClearCurrent();
 			this._ui.Visible = false;
+
+			// Wire up UI to new plane
+			UiOverlay.Instance.SetTrackedPlane(newPlane);
 		}
     }
 }

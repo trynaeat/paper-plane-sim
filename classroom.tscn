@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cfwyrlotwrdo8" path="res://Props/TrashCan.tscn" id="7_33mpu"]
 [ext_resource type="PackedScene" uid="uid://m5shf3poxti6" path="res://Blocks/CeilingLight.tscn" id="8_hnw33"]
 [ext_resource type="PackedScene" uid="uid://bns2llqss3ve" path="res://Blocks/CeilingDrop1x1.tscn" id="11_aa71e"]
-[ext_resource type="PackedScene" uid="uid://d1ntf71lev6d4" path="res://HitZone.tscn" id="12_fajri"]
+[ext_resource type="PackedScene" uid="uid://dmg7brw3yryfo" path="res://ScoreZone.tscn" id="12_fnh3r"]
 [ext_resource type="PackedScene" uid="uid://dhhc2pqjs3l22" path="res://Props/TeachersDesk.tscn" id="12_yjqf6"]
 [ext_resource type="PackedScene" uid="uid://bstylulecjc7d" path="res://Props/Whiteboard.tscn" id="13_wobtr"]
 [ext_resource type="PackedScene" uid="uid://dahm87e8pp0v7" path="res://Props/Lockers2x2.tscn" id="14_v04i2"]
@@ -660,8 +660,8 @@ transform = Transform3D(-2.73196e-08, 0, 0.625, 0, 0.625, 0, -0.625, 0, -2.73196
 [node name="TrashCan" parent="." instance=ExtResource("7_33mpu")]
 transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 4.5935, -4.76837e-07, 12.1493)
 
-[node name="HitZone" parent="TrashCan" instance=ExtResource("12_fajri")]
-transform = Transform3D(0.845, 0, 0, 0, 0.845, 0, 0, 0, 0.845, 0, 0.0704949, 0)
+[node name="ScoreZone" parent="TrashCan" instance=ExtResource("12_fnh3r")]
+transform = Transform3D(0.825, 0, 0, 0, 0.825, 0, 0, 0, 0.825, 0, 0.165266, 0)
 
 [node name="TeachersDesk" parent="." instance=ExtResource("12_yjqf6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11821, 0, 10.7295)

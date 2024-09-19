@@ -41,10 +41,19 @@ public partial class Plane : RigidBody3D
     private double _aoa = 0;
     private double _aoaSigned = 0;
     private bool _active = true;
+    private CollisionShape3D _collider;
+    public CollisionShape3D Collider { get => _collider; }
+
+    private PlaneTracker _tracker;
+
+    public PlaneTracker Tracker { get => _tracker; }
 
     public override void _Ready()
     {
         base._Ready();
+        _tracker = GetNode<PlaneTracker>("PlaneTracker");
+        _collider = GetNode<CollisionShape3D>("CollisionShape3D");
+        _tracker.StartTracking();
         DebugOverlay.Draw.AddVector(this, RigidBody3D.PropertyName.LinearVelocity, 1f, new Color(0, 1, 0));
         DebugOverlay.Draw.AddVector(this, "Lift", 0.01f, new Color(0, 0, 1));
         DebugOverlay.Draw.AddVector(this, "Drag", 0.01f, new Color(1, 0, 0));
@@ -183,5 +192,6 @@ public partial class Plane : RigidBody3D
     public void Deactivate ()
     {
         this._active = false;
+        this._tracker.StopTracking();
     }
 }

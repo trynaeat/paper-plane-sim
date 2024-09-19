@@ -31,7 +31,7 @@ active = false
 [node name="Physical Bone Bone" type="PhysicalBone3D" parent="Net_Armature/Skeleton3D/PhysicalBoneSimulator3D" index="0"]
 transform = Transform3D(3.57628e-07, -1, 1.17656e-07, -1.58366e-13, 1.17656e-07, 1, -1, -3.57628e-07, -1.16289e-13, -5.20147e-09, -0.0442091, 0)
 axis_lock_angular_y = true
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14104e-15, -1.83858e-21, 0.0442091)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.14103e-15, -1.83858e-21, 0.0442091)
 body_offset = Transform3D(1, -5.68434e-14, 1.16289e-13, 1.19286e-13, -7.10543e-15, -1, 5.68434e-14, 1, 4.15882e-20, 0, 0.0442091, 0)
 bone_name = "Bone"
 
@@ -40,10 +40,10 @@ transform = Transform3D(0.39, 0, 0, 0, -1.70474e-08, 0.39, 0, -0.39, -1.70474e-0
 shape = SubResource("CylinderShape3D_ak5wv")
 
 [node name="Physical Bone Bone_001" type="PhysicalBone3D" parent="Net_Armature/Skeleton3D/PhysicalBoneSimulator3D" index="1"]
-transform = Transform3D(4.75284e-07, -1, -7.76107e-14, -1.80377e-13, -7.76108e-14, 1, -1, -4.75284e-07, -1.80377e-13, -1.0403e-08, -0.130628, 0)
+transform = Transform3D(4.75284e-07, -1, -7.76107e-14, -1.80378e-13, -7.76107e-14, 1, -1, -4.75284e-07, -1.80378e-13, -1.0403e-08, -0.130628, 0)
 axis_lock_angular_y = true
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81237e-15, -2.3762e-15, 0.0422102)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81239e-15, -2.3762e-15, 0.0422102)
 body_offset = Transform3D(1, -1.7053e-13, 1.61392e-13, 1.64389e-13, 4.20836e-14, -1, 1.7053e-13, 1, 5.62945e-14, 0, 0.0422102, 0)
 bone_name = "Bone.001"
 joint_constraints/bias = 0.3
@@ -58,7 +58,7 @@ shape = SubResource("CylinderShape3D_inqwd")
 transform = Transform3D(4.75284e-07, -1, -7.7042e-14, -1.78157e-13, -7.7042e-14, 1, -1, -4.75284e-07, -1.78157e-13, -1.04029e-08, -0.215627, 0)
 axis_lock_angular_y = true
 joint_type = 1
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81066e-15, -2.38442e-15, 0.0427884)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81067e-15, -2.38441e-15, 0.0427884)
 body_offset = Transform3D(1, -1.7053e-13, 1.59171e-13, 1.62168e-13, 4.15149e-14, -1, 1.7053e-13, 1, 5.57257e-14, 0, 0.0427884, 0)
 bone_name = "Bone.002"
 joint_constraints/bias = 0.3
@@ -70,7 +70,7 @@ transform = Transform3D(2, 0, 0, 0, -8.74228e-08, 2, 0, -2, -8.74228e-08, 0, 0, 
 shape = SubResource("CylinderShape3D_avm1u")
 
 [node name="Physical Bone Bone_003" type="PhysicalBone3D" parent="Net_Armature/Skeleton3D/PhysicalBoneSimulator3D" index="3"]
-transform = Transform3D(4.33126e-07, -1, -4.37114e-08, 3.40776e-20, -4.37114e-08, 1, -1, -4.33126e-07, -1.89325e-14, -1.04029e-08, -0.315949, 0)
+transform = Transform3D(4.33126e-07, -1, -4.37114e-08, -4.8859e-21, -4.37114e-08, 1, -1, -4.33126e-07, -1.89325e-14, -1.04029e-08, -0.315949, 0)
 axis_lock_angular_y = true
 joint_type = 1
 joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09232e-15, -2.51485e-09, 0.0575331)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1vheg3ky3def"]
+
+[ext_resource type="Script" path="res://UiOverlay.cs" id="1_tlo54"]
+
+[node name="UIOverlay" type="CanvasLayer"]
+script = ExtResource("1_tlo54")
+
+[node name="UIContainer" type="VBoxContainer" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 60.0
+offset_bottom = 60.0
+size_flags_horizontal = 0
+
+[node name="ScoreLabel" type="Label" parent="UIContainer"]
+layout_mode = 2
+text = "Score: 0"
+
+[node name="TimeLabel" type="Label" parent="UIContainer"]
+layout_mode = 2
